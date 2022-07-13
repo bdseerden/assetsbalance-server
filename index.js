@@ -3,6 +3,7 @@ const corsMiddleWare = require("cors");
 // Auth middleware: our own code. Checks for the existence of a token in a header called `authentication`.
 const authMiddleWare = require("./auth/middleware");
 const authRouter = require("./routers/auth");
+const holdingRouter = require("./routers/holding");
 const { PORT } = require("./config/constants");
 
 // Create an express app
@@ -30,6 +31,7 @@ app.use(bodyParserMiddleWare);
  *
  * Define your routes and attach our routers here (now that middlewares are configured)
  */
+app.use("/", holdingRouter);
 
 app.use("/auth", authRouter);
 

@@ -1,6 +1,7 @@
 {
   "development": {
-    "url": "postgres://eunjzloy:5VJlUE0-Df4uvGwH9IpXkt1n6-IEzf6n@hattie.db.elephantsql.com/eunjzloy"
+    "url": "postgres://nuoksdbm:kJFrznkiDHbPGpzrsqSTGhg0uD8iIXTx@tyke.db.elephantsql.com/nuoksdbm",
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",
