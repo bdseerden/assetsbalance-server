@@ -3,6 +3,7 @@ const { Router } = require("express");
 const { toJWT } = require("../auth/jwt");
 const authMiddleware = require("../auth/middleware");
 const User = require("../models/").user;
+const Holding = require("../models/").holding;
 const { SALT_ROUNDS } = require("../config/constants");
 
 const router = new Router();
@@ -51,7 +52,68 @@ router.post("/signup", async (req, res) => {
 
     const token = toJWT({ userId: newUser.id });
 
-    res.status(201).json({ token, user: newUser.dataValues });
+    const newBTC = await Holding.create({
+      asset: "BTC",
+      amount: 0,
+      userId: newUser.id,
+    });
+
+    const newETH = await Holding.create({
+      asset: "ETH",
+      amount: 0,
+      userId: newUser.id,
+    });
+
+    const newLTC = await Holding.create({
+      asset: "LTC",
+      amount: 0,
+      userId: newUser.id,
+    });
+
+    const newXRP = await Holding.create({
+      asset: "XRP",
+      amount: 0,
+      userId: newUser.id,
+    });
+
+    const newAAPL = await Holding.create({
+      asset: "AAPL",
+      amount: 0,
+      userId: newUser.id,
+    });
+
+    const newABNB = await Holding.create({
+      asset: "ABNB",
+      amount: 0,
+      userId: newUser.id,
+    });
+
+    const newAMD = await Holding.create({
+      asset: "AMD",
+      amount: 0,
+      userId: newUser.id,
+    });
+
+    const newAMZN = await Holding.create({
+      asset: "AMZN",
+      amount: 0,
+      userId: newUser.id,
+    });
+
+    res.status(201).json({
+      token,
+      user: newUser.dataValues,
+      holdings: {
+        BTC: { ...newBTC.dataValues },
+        ETH: { ...newETH.dataValues },
+        LTC: { ...newLTC.dataValues },
+        XRP: { ...newXRP.dataValues },
+        AAPL: { ...newAAPL.dataValues },
+        ABNB: { ...newABNB.dataValues },
+        AMD: { ...newAMD.dataValues },
+        AMZN: { ...newAMZN.dataValues },
+      },
+    });
   } catch (error) {
     if (error.name === "SequelizeUniqueConstraintError") {
       return res

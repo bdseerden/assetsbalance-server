@@ -10,7 +10,6 @@ module.exports = {
       },
       asset: {
         allowNull: false,
-        unique: true,
         type: Sequelize.STRING,
       },
       amount: {

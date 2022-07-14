@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   holding.init(
     {
-      asset: { type: DataTypes.STRING, allowNull: false, unique: true },
+      asset: { type: DataTypes.STRING, allowNull: false },
       amount: { type: DataTypes.INTEGER, allowNull: false },
     },
     {
