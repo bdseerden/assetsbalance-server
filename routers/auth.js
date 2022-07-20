@@ -100,6 +100,18 @@ router.post("/signup", async (req, res) => {
       userId: newUser.id,
     });
 
+    const newGLD = await Holding.create({
+      asset: "GLD",
+      amount: 0,
+      userId: newUser.id,
+    });
+
+    const newSLV = await Holding.create({
+      asset: "SLV",
+      amount: 0,
+      userId: newUser.id,
+    });
+
     res.status(201).json({
       token,
       user: newUser.dataValues,
@@ -112,6 +124,8 @@ router.post("/signup", async (req, res) => {
         ABNB: { ...newABNB.dataValues },
         AMD: { ...newAMD.dataValues },
         AMZN: { ...newAMZN.dataValues },
+        GLD: { ...newGLD.dataValues },
+        SLV: { ...newSLV.dataValues },
       },
     });
   } catch (error) {

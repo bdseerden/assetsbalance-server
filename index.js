@@ -31,7 +31,7 @@ app.use(bodyParserMiddleWare);
  *
  * Define your routes and attach our routers here (now that middlewares are configured)
  */
-app.use("/", holdingRouter);
+app.use("/holdings", holdingRouter);
 
 app.use("/auth", authRouter);
 
