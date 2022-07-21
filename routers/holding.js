@@ -16,7 +16,7 @@ router.get("/:id", async (req, res) => {
 
   const holding = await User.findByPk(id, {
     include: [Holding],
-    order: [[Holding, "amount", "DESC"]],
+    order: [[Holding, "asset", "ASC"]],
   });
 
   if (holding === null) {
